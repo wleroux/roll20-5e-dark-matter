@@ -21,7 +21,7 @@ function buildSheet(dev) {
 	let templates = getTemplates();
 	let helpers = getScripts(true);
 	let workers = getScripts(false);
-	let sheet = fs.readFileSync(path.join("src", "sheets", "darker-dungeons.html"), 'utf8');
+	let sheet = fs.readFileSync(path.join("src", "sheets", "dark-matter.html"), 'utf8');
 
 	if (dev) {
 		sheet = getWrapper(sheet);
@@ -36,7 +36,7 @@ function buildSheet(dev) {
 		.pipe(gulpif(dev, replace(/<script type="text\/javascript" data-type=".*?">/g, '<script>')))
 		.pipe(gulpif(!dev, replace(/<script type="text\/javascript" data-type="helpers">.*?<\/script>/g, '')))
 		.pipe(gulpif(!dev, replace(/<script type="text\/javascript" data-type="workers">/g, '<script type="text/worker">')))
-		.pipe(gulp.dest(path.join("dist", dev ? "dev" : "live", "darker-dungeons.html")));
+		.pipe(gulp.dest(path.join("dist", dev ? "dev" : "live", "dark-matter.html")));
 }
 
 function getScripts(dev) {
@@ -59,7 +59,7 @@ function getWrapper(content) {
 				<title>Roll20 Character Sheet</title>
 				<link rel="stylesheet" href="./vendors/roll20/base.css">
 				<link rel="stylesheet" href="./vendors/roll20/app.css">
-				<link rel="stylesheet" href="./stylesheets/darker-dungeons.css">
+				<link rel="stylesheet" href="./stylesheets/dark-matter.css">
 				<style>
 					.ui-dialog {
 						padding: 0;

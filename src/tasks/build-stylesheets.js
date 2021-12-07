@@ -22,7 +22,7 @@ function buildStylesheets (dev) {
 	return gulp.src(path.join(folder, "**/*.scss"), { base: folder })
 		.pipe(gulpif(dev, sourcemaps.init()))
 		.pipe(sass())
-		.pipe(gulpif(!dev, replace(/\.\.\/images\//g, 'https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/5e%20Darker%20Dungeons/img/')))
+		.pipe(gulpif(!dev, replace(/\.\.\/images\//g, 'https://raw.githubusercontent.com/wleroux/roll20-5e-dark-matter/master/src/images/')))
 		.pipe(gulpif(dev, sourcemaps.write()))
 		.pipe(gulpif(!dev, replace(/@font-face.*html {.*?}/gms, '')))
 		.pipe(gulpif(!dev, remove()))
