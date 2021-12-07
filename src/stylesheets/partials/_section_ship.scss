@@ -1,0 +1,409 @@
+// Styles for npc pages.
+
+.charsheet .sheet-darkmatter {
+
+	.sheet-section-ship {
+		margin: 0 auto;
+		max-width: $width-ship;
+		position: relative;
+
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+
+		.sheet-section-ship-header {
+		    display: flex;
+		    gap: 1em;
+		    flex-direction: row;
+
+		    .sheet-section-ship-name {
+    		    position: relative;
+    		    width: 330px;
+    		    height: 64px;
+		        label {
+		            position: absolute;
+		            text-align: right;
+		            right: 2px;
+		            bottom: 4px;
+		            font-variant: small-caps;
+		        }
+
+		        input {
+		            font-size: 32px;
+		            width: 100%;
+		            height: 100%;
+		            border: 0;
+		            border-radius: 0;
+		            border-bottom: 1px solid #000;
+		        }
+		    }
+
+		    .sheet-section-ship-model {
+		        position: relative;
+    		    width: 160px;
+		        height: 44px;
+		        label {
+		            position: absolute;
+		            width: 100%;
+		            font-size: 12px;
+		            text-align: center;
+		            bottom: 0px;
+		            font-variant: small-caps;
+		        }
+		        input {
+		            width: 100%;
+		            height: 100%;
+		            text-align: center;
+		            font-size: 18px;
+
+		            border: 0;
+		            border-radius: 0;
+		            border-bottom: 1px solid #000;
+		        }
+		    }
+
+		    .sheet-section-ship-size {
+		        position: relative;
+    		    width: 160px;
+		        height: 44px;
+		        label {
+		            position: absolute;
+		            width: 100%;
+		            font-size: 12px;
+		            text-align: center;
+		            bottom: 0px;
+		            font-variant: small-caps;
+		        }
+		        input {
+		            width: 100%;
+		            height: 100%;
+		            text-align: center;
+		            font-size: 16px;
+
+		            border: 0;
+		            border-radius: 0;
+		            border-bottom: 1px solid #000;
+		        }
+		    }
+
+		    .sheet-section-ship-armor-class {
+		        position: relative;
+    		    width: 70px;
+		        height: 100px;
+		        label {
+		            position: absolute;
+		            width: 100%;
+		            font-size: 12px;
+		            text-align: center;
+		            top: 4px;
+		            font-variant: small-caps;
+		        }
+		        input {
+		            width: 100%;
+		            height: 100%;
+		            text-align: center;
+		            font-size: 24px;
+
+		            border: 1px solid #000;
+		            border-radius: 50px;
+		        }
+		    }
+
+		    .sheet-section-ship-hit-points {
+		        position: relative;
+    		    width: 70px;
+		        height: 100px;
+		        label {
+		            position: absolute;
+		            width: 100%;
+		            font-size: 12px;
+		            text-align: center;
+		            top: 4px;
+		            font-variant: small-caps;
+		        }
+		        input {
+		            width: 100%;
+		            height: 50%;
+		            text-align: center;
+		            font-size: 24px;
+		            padding-top: 16px;
+
+                    border: 0;
+		            border-bottom: 1px solid #000;
+		            border-radius: 0;
+		        }
+		    }
+
+		    .sheet-section-ship-shield {
+		        position: relative;
+    		    width: 70px;
+		        height: 100px;
+		        label {
+		            position: absolute;
+		            width: 100%;
+		            font-size: 12px;
+		            text-align: center;
+		            top: 4px;
+		            font-variant: small-caps;
+		        }
+		        input {
+		            width: 100%;
+		            height: 50%;
+		            text-align: center;
+		            font-size: 24px;
+		            padding-top: 16px;
+
+                    border: 0;
+		            border-bottom: 1px solid #000;
+		            border-radius: 0;
+		        }
+		    }
+		}
+
+		.sheet-section-ship-body {
+		    display: flex;
+		    flex-direction: row;
+		    width: 100%;
+		    gap: 1em;
+
+		    .sheet-section-ship-col1 {
+		        width: 230px;
+		        flex-grow: 0;
+		        flex-shrink: 0;
+		    }
+
+		    .sheet-section-ship-col2 {
+    		    width: 120px;
+		        flex-grow: 0;
+		        flex-shrink: 0;
+		    }
+		}
+
+		.sheet-section-ship-extra {
+		    flex-grow: 1;
+		}
+
+		.sheet-section-ship-systems {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2em;
+            gap: 8px;
+            label {
+                font-weight: bold;
+                font-variant: small-caps;
+            }
+
+		    .sheet-section-ship-system {
+		        display: flex;
+		        input {
+		            margin-right: 1em;
+		        }
+		        label {
+		            font-weight: bold;
+		        }
+		    }
+		}
+
+		.sheet-section-ship-cargo {
+		    margin-top: 2em;
+		    label {
+		        font-weight: bold;
+		        font-variant: small-caps;
+		        text-align: center;
+		    }
+		    input {
+    		    width: 100%;
+		        border: 0;
+		        border-radius: 0;
+		        border-bottom: 1px solid #000;
+		    }
+
+		    .sheet-section-ship-cargo-item {
+    		    width: 100%;
+		        display: flex;
+		        gap: 4px;
+                .sheet-section-ship-cargo-item-quantity {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    flex-basis: 50px;
+                }
+                .sheet-section-ship-cargo-item-name {
+                    flex-grow: 1;
+                }
+		    }
+		}
+
+        .sheet-section-ship-engine {
+            .sheet-section-ship-engine-class {
+                label {
+                    font-weight: bold;
+                    font-variant: small-caps;
+                }
+                input {
+                    width: 1.5em;
+                    height: 1.5em;
+                    font-size: 3em;
+                    text-align: center;
+                }
+            }
+            .sheet-section-ship-engine-maneuverability {
+                label {
+                    font-weight: bold;
+                    font-variant: small-caps;
+                }
+                input {
+                    width: 4em;
+                    height: 1.5em;
+                    font-size: 2em;
+                    text-align: center;
+                }
+            }
+            .sheet-section-ship-engine-speed {
+                label {
+                    font-weight: bold;
+                    font-variant: small-caps;
+                }
+                input {
+                    width: 5em;
+                    height: 1.5em;
+                    font-size: 1.5em;
+                    text-align: center;
+                }
+            }
+        }
+
+		.sheet-section-ship-crews {
+		    display: flex;
+		    flex-direction: column;
+		    gap: 8px;
+		    background-color: #d1d3d4;
+		    padding-bottom: 12px;
+		    padding-top: 12px;
+		    padding-left: 24px;
+		    padding-right: 12px;
+
+		    .sheet-section-ship-crew {
+    		    width: 100%;
+    		    position:relative;
+    		    input {
+    		        width: 100%;
+    		        border: 0;
+    		        border-bottom: 1px solid #666;
+    		        border-radius: 0;
+    		    }
+                label {
+                    position: absolute;
+                    text-align: right;
+                    top: 0px;
+                    right: 8px;
+                    font-size: 10px;
+                    color: #000;
+                    font-variant: small-caps;
+                }
+		    }
+		}
+
+		.sheet-section-ship-traits {
+		    label {
+		        font-weight: bold;
+		        font-variant: small-caps;
+		        text-align: center;
+		    }
+            .sheet-section-ship-trait-name {
+                position: relative;
+                label {
+                    position: absolute;
+                    right: 4px;
+                    bottom: 0px;
+                    text-align: right;
+                }
+
+                input {
+                    width: 100%;
+                    border: 0;
+                    border-radius: 0;
+                    border-bottom: 1px solid #000;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+            }
+            .sheet-section-ship-trait-description {
+                textarea {
+                    width: 100%;
+                    min-height: 3em;
+                    border: 0;
+                    border-radius: 0;
+                    border-bottom: 1px solid #000;
+                }
+            }
+		}
+
+		.sheet-section-ship-weapons {
+		    display: flex;
+		    flex-direction: column;
+    		width: 100%;
+    		label {
+    		    font-weight: bold;
+    		    font-variant: small-caps;
+    		    text-align: center;
+    		}
+		    .sheet-section-ship-weapon {
+		        width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+		        .sheet-section-ship-weapon-overview {
+                    display: flex;
+                    gap: 4px;
+		        }
+
+		        input {
+                    width: 100%;
+		            border: 0;
+		            border-radius: 0;
+		            border-bottom: 1px solid #000;
+		        }
+
+                .sheet-section-ship-quantity {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    flex-basis: 50px;
+                }
+                .sheet-section-ship-weapon-name {
+                    flex-grow: 1;
+                }
+                .sheet-section-ship-attack-bonus {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    flex-basis: 50px;
+                }
+                .sheet-section-ship-damage {
+                    flex-grow: 1;
+                }
+                .sheet-section-ship-crit-damage {
+                    flex-grow: 1;
+                }
+                .sheet-section-ship-damage-type {
+                    flex-grow: 1;
+                }
+		    }
+		}
+
+		.sheet-section-ship-footer p {
+			color: #cccccc;
+			font-size: 9px;
+			margin: 3px 0 0;
+			text-align: center;
+
+			a {
+				color: inherit;
+
+				&:hover {
+					text-decoration: none;
+					background: $hover-bg;
+				}
+			}
+		}
+	}
+}

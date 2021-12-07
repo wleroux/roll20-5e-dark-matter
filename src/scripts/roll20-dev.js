@@ -109,7 +109,15 @@ $(document).ready(function() {
 	function setupTestData() {
 
 		// defaults
-		setValue("npc", "0");
+		setValue("sheet", "ship");
+		setText("ship_name", "Hammer");
+		setText("ship_model", "Dwarven fighter");
+		setValue("ship_armor_class", "14");
+		setValue("ship_hit_points", "35");
+		setValue("ship_hit_points_max", "35");
+		setValue("ship_shield", "35");
+		setValue("ship_shield_max", "35");
+
 		setText("npc_name", "Lich");
 		setText("npc_type", "Medium undead, Any Evil Alignment");
 		setText("npc_ac", "17");

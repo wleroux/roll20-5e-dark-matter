@@ -1,7 +1,7 @@
 <div class="sheet-darkmatter">
 	<input class="monster_confirm_flag" type="hidden" name="attr_monster_confirm_flag">
 	<div class="licensecontainer compendium-drop-target monsters">
-		<input class="sheet-toggle-npc" name="attr_npc" type="hidden" value="0">
+		<input class="sheet-toggle-sheet" name="attr_sheet" type="hidden" value="pc">
 		<input class="sheet-toggle-npc-spells" name="attr_npcspellcastingflag" type="checkbox" value="1" hidden>
 		<input class="sheet-toggle-npc-edit" name="attr_npc_options-flag" type="checkbox" hidden>
 		<div class="sheet-section-roll">
@@ -30,6 +30,222 @@
 					<input type="radio" name="attr_whispertoggle" value="/w gm ">
 					<span title="@{whispertoggle}">To GM</span>
 				</label>
+			</div>
+		</div>
+		<div class="sheet-section-ship">
+			<div class="sheet-section-ship-header">
+				<div class="sheet-section-ship-name">
+					<label for="attr_ship_name">Ship Name</label>
+					<input type="text" id="attr_ship_name" name="attr_ship_name" />
+				</div>
+				<div>
+					<div class="sheet-section-ship-model">
+						<label>Model</label>
+						<input type="text" name="attr_ship_model" />
+					</div>
+					<div class="sheet-section-ship-size">
+						<label>Size Classification</label>
+						<input type="text" name="attr_ship_size_classification" />
+					</div>
+				</div>
+
+				<div class="sheet-section-ship-armor-class">
+					<label for="attr_ship_armor_class">Armor Class</label>
+					<input type="number" id="attr_ship_armor_class" name="attr_ship_armor_class" />
+				</div>
+				<div class="sheet-section-ship-hit-points">
+					<label>Hit Points</label>
+					<input type="number" name="attr_ship_hit_points" />
+					<input type="number" name="attr_ship_hit_points_max" />
+				</div>
+				<div class="sheet-section-ship-shield">
+					<label>Shield</label>
+					<input type="number" name="attr_ship_shield" />
+					<input type="number" name="attr_ship_shield_max" />
+				</div>
+			</div>
+
+			<div class="sheet-section-ship-body">
+				<div class="sheet-section-ship-col1">
+					<div class="sheet-section-ship-crews">
+						<div class="sheet-section-ship-crew">
+							<label for="attr_ship_captain">Captain</label>
+							<input type="text" id="attr_ship_captain" name="attr_ship_captain" />
+						</div>
+						<div class="sheet-section-ship-crew">
+							<label for="attr_ship_dog_fighter">Dog Fighter</label>
+							<input type="text" id="attr_ship_dog_fighter" name="attr_ship_dog_fighter" />
+						</div>
+						<div class="sheet-section-ship-crew">
+							<label for="attr_ship_engineer">Engineer</label>
+							<input type="text" id="attr_ship_engineer" name="attr_ship_engineer" />
+						</div>
+						<div class="sheet-section-ship-crew">
+							<label for="attr_ship_gunner_1">Gunner 1</label>
+							<input type="text" id="attr_ship_gunner_1" name="attr_ship_gunner_1" />
+						</div>
+						<div class="sheet-section-ship-crew">
+							<label for="attr_ship_gunner_2">Gunner 2</label>
+							<input type="text" id="attr_ship_gunner_2" name="attr_ship_gunner_2" />
+						</div>
+						<div class="sheet-section-ship-crew">
+							<label for="attr_ship_pilot">Pilot</label>
+							<input type="text" id="attr_ship_pilot" name="attr_ship_pilot" />
+						</div>
+					</div>
+
+					<div class="sheet-section-ship-cargo">
+						<label>Cargo</label>
+						<fieldset class="repeating_ship-cargo" style="display: none;">
+							<div class="sheet-section-ship-cargo-item">
+								<div class="sheet-section-ship-cargo-item-quantity">
+									<input type="number" name="attr_qty" value="1" />
+								</div>
+								<div class="sheet-section-ship-cargo-item-name">
+									<input type="text" name="attr_name" />
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="sheet-section-ship-col2">
+					<div class="sheet-section-ship-engine">
+						<div class="sheet-section-ship-engine-class">
+							<label for="attr_ship_dark_matter_engine_class">Dark Matter Engine Class</label>
+							<input text="text" id="attr_ship_dark_matter_engine_class" name="attr_ship_dark_matter_engine_class" />
+						</div>
+						<div class="sheet-section-ship-engine-maneuverability">
+							<label for="attr_ship_maneuverability">Maneuverability</label>
+							<input text="text" id="attr_ship_maneuverability" name="attr_ship_maneuverability" />
+						</div>
+						<div class="sheet-section-ship-engine-speed">
+							<label for="attr_ship_speed">Speed</label>
+							<input text="text" id="attr_ship_speed" name="attr_ship_speed" />
+						</div>
+					</div>
+
+					<div class="sheet-section-ship-systems">
+						<label>Systems</label>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_arcane_cannon" name="attr_ship_system_arcane_cannon" value="1" />
+							<label for="attr_ship_system_arcane_cannon">Arcane Cannon</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_cloaking" name="attr_ship_system_cloaking" value=1"/>
+							<label for="attr_ship_system_cloaking">Cloaking</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_communications" name="attr_ship_system_communications" value="1" />
+							<label for="attr_ship_system_communications">Communications</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_fabricator" name="attr_ship_system_fabricator" value="1" />
+							<label for="attr_ship_system_fabricator">Fabricator</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_hypercapacitor" name="attr_ship_system_hypercapacitor" value="1" />
+							<label for="attr_ship_system_hypercapacitor">Hypercapacitor</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_life_pods" name="attr_ship_system_life_pods" value="1" />
+							<label for="attr_ship_system_life_pods">Life Pods</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_life_support" name="attr_ship_system_life_support" value="1" />
+							<label for="attr_ship_system_life_support">Life Support</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_probe" name="attr_ship_system_probe" value="1" />
+							<label for="attr_ship_system_probe">Probe</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_sensors" name="attr_ship_system_sensors" value="1" />
+							<label for="attr_ship_system_sensors">Sensors</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_shield_generator" name="attr_ship_system_shield_generator" value="1" />
+							<label for="attr_ship_system_shield_generator">Shield Generator</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_shuttle" name="attr_ship_system_shuttle" value="1" />
+							<label for="attr_ship_system_shuttle">Shuttle</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_sickbay" name="attr_ship_system_sickbay" value="1" />
+							<label for="attr_ship_system_sickbay">Sickbay</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_simulation" name="attr_ship_system_simulation" value="1" />
+							<label for="attr_ship_system_simulation">Simulation</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_teleporters" name="attr_ship_system_teleporters" value="1" />
+							<label for="attr_ship_system_teleporters">Teleporters</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_tractor_beam" name="attr_ship_system_tractor_beam" value="1" />
+							<label for="attr_ship_system_tractor_beam">TractorBeam</label>
+						</div>
+						<div class="sheet-section-ship-system">
+							<input type="checkbox" id="attr_ship_system_umbilicus" name="attr_ship_system_umbilicus" value="1" />
+							<label for="attr_ship_system_umbilicus">Umbilicus</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="sheet-section-ship-extra">
+					<div class="sheet-section-ship-traits">
+						<label>Ship Traits and Upgrades</label>
+						<fieldset class="repeating_ship-trait" style="display: none;">
+							<div class="sheet-section-ship-trait-name">
+								<label>Name</label>
+								<input type="text" id="attr_name" name="attr_name" />
+							</div>
+							<div class="sheet-section-ship-trait-description">
+								<textarea name="attr_description"></textarea>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="sheet-section-ship-weapons">
+						<label>Weapons</label>
+						<fieldset class="repeating_ship-weapon">
+							<div class="sheet-section-ship-weapon">
+								<div class="sheet-section-ship-weapon-overview">
+									<div class="sheet-section-ship-weapon-quantity">
+										<input type="number" name="attr_quantity" value="1" />
+									</div>
+									<div class="sheet-section-ship-weapon-name">
+										<input type="text" name="attr_name" placeholder="Name" />
+									</div>
+									<div class="sheet-section-ship-attack-bonus">
+										<input type="number" name="attr_attack_bonus" placeholder="Attack Bonus" />
+									</div>
+									<div class="sheet-section-ship-damage">
+										<input type="text" name="attr_damage" placeholder="Damage" />
+									</div>
+									<div class="sheet-section-ship-damage-type">
+										<input type="text" name="attr_damage-type" placeholder="Damage Type" />
+									</div>
+								</div>
+								<div class="sheet-section-ship-notes">
+									<input type="text" name="attr_notes"  placeholder="Notes"/>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+
+			<div class="sheet-section-ship-options">
+				<div>
+					<label>General Options</label>
+					<select name="attr_sheet">
+						<option value="pc">PC</option>
+						<option value="npc">NPC</option>
+						<option value="ship">Ship</option>
+					</select>
+				</div>
 			</div>
 		</div>
 		<div class="sheet-section-npc">
@@ -327,8 +543,11 @@
 							<div class="sheet-form-fieldset-body">
 								<div class="sheet-form-group">
 									<label class="sheet-form-checkbox">
-										<input type="checkbox" name="attr_npc" value="1">
-										<span>NPC</span>
+										<select name="attr_sheet">
+											<option value="pc">PC</option>
+											<option value="npc">NPC</option>
+											<option value="ship">Ship</option>
+										</select>
 									</label>
 								</div>
 								<div class="sheet-form-group">
@@ -6276,8 +6495,11 @@
 												</div>
 												<div class="sheet-form-group">
 													<label class="sheet-form-checkbox" title="@{npc}">
-														<input type="checkbox" name="attr_npc" value="1">
-														<span>NPC</span>
+														<select name="attr_sheet">
+															<option value="pc">PC</option>
+															<option value="npc">NPC</option>
+															<option value="ship">Ship</option>
+														</select>
 													</label>
 												</div>
 												<div class="sheet-form-group">

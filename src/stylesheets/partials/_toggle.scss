@@ -82,26 +82,36 @@
 		}
 	}
 
-	.sheet-toggle-npc {
-
-		&[value="0"] {
-
+	.sheet-toggle-sheet {
+		&[value="npc"] {
+			~ .sheet-section-npc {
+				display: block;
+			}
+		}
+        &:not([value="npc"]) {
 			~ .sheet-section-npc {
 				display: none;
 			}
+        }
 
+		&[value="pc"] {
 			~ .sheet-section-pc {
 				display: block;
 			}
 		}
-
-		&:not([value="0"]) {
-
-			~ .sheet-section-npc {
-				display: block;
-			}
-
+		&:not([value="pc"]) {
 			~ .sheet-section-pc {
+				display: none;
+			}
+		}
+
+		&[value="ship"] {
+			~ .sheet-section-ship {
+				display: flex;
+			}
+		}
+		&:not([value="ship"]) {
+			~ .sheet-section-ship {
 				display: none;
 			}
 		}
