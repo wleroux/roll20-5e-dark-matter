@@ -116,12 +116,12 @@ on("sheet:compendium-drop", function() {
 				update_skills(["athletics"]);
 				break;
 			case "dexterity":
-				update_skills(["acrobatics", "sleight_of_hand", "stealth"]);
+				update_skills(["acrobatics", "piloting", "sleight_of_hand", "stealth"]);
 				update_ac();
 				update_initiative();
 				break;
 			case "intelligence":
-				update_skills(["arcana", "history", "investigation", "nature", "religion"]);
+				update_skills(["arcana", "data", "history", "investigation", "nature", "religion", "technology"]);
 				update_initiative();
 				break;
 			case "wisdom":
@@ -153,7 +153,7 @@ on("change:death_save_mod", function(eventinfo) {
 	update_save("death");
 });
 
-['acrobatics','animal_handling','arcana','athletics','deception','history','insight','intimidation','investigation', 'medicine','nature','perception','performance','persuasion','religion','sleight_of_hand','stealth','survival'].forEach(attr => {
+['acrobatics','animal_handling','arcana','athletics','data','deception','history','insight','intimidation','investigation', 'medicine','nature','perception','performance','persuasion','piloting','religion','sleight_of_hand','stealth','survival','technology'].forEach(attr => {
 	on(`change:${attr}_prof change:${attr}_type change:${attr}_flat change:${attr}_attribute`, function(eventinfo) {
 		if(eventinfo.sourceType === "sheetworker") {return;};
 		update_skills([`${attr}`]);
@@ -502,7 +502,7 @@ on("change:npc_str_save_base change:npc_dex_save_base change:npc_con_save_base c
 	update_npc_saves();
 });
 
-on("change:npc_acrobatics_base change:npc_animal_handling_base change:npc_arcana_base change:npc_athletics_base change:npc_deception_base change:npc_history_base change:npc_insight_base change:npc_intimidation_base change:npc_investigation_base change:npc_medicine_base change:npc_nature_base change:npc_perception_base change:npc_performance_base change:npc_persuasion_base change:npc_religion_base change:npc_sleight_of_hand_base change:npc_stealth_base change:npc_survival_base", function(eventinfo) {
+on("change:npc_acrobatics_base change:npc_animal_handling_base change:npc_arcana_base change:npc_athletics_base change:npc_data_base change:npc_deception_base change:npc_history_base change:npc_insight_base change:npc_intimidation_base change:npc_investigation_base change:npc_medicine_base change:npc_nature_base change:npc_perception_base change:npc_performance_base change:npc_persuasion_base change:npc_piloting_base change:npc_religion_base change:npc_sleight_of_hand_base change:npc_stealth_base change:npc_survival_base change:npc_technology_base", function(eventinfo) {
 	update_npc_skills();
 });
 
@@ -781,7 +781,7 @@ var update_all_saves = function() {
 
 var update_all_ability_checks = function(){
 	update_initiative();
-	update_skills(["athletics", "acrobatics", "sleight_of_hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal_handling", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);
+	update_skills(["athletics", "acrobatics", "piloting", "sleight_of_hand", "stealth", "arcana", "data", "history", "investigation", "nature", "religion", "technology", "animal_handling", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);
 };
 
 var update_skills = function (skills_array) {
@@ -1453,6 +1453,7 @@ var processDrop = function(page, currentData, repeating, looped) {
 		update["npc_animal_handling_base"] = "";
 		update["npc_arcana_base"] = "";
 		update["npc_athletics_base"] = "";
+		update["npc_data_base"] = "";
 		update["npc_deception_base"] = "";
 		update["npc_history_base"] = "";
 		update["npc_insight_base"] = "";
@@ -1463,10 +1464,12 @@ var processDrop = function(page, currentData, repeating, looped) {
 		update["npc_perception_base"] = "";
 		update["npc_performance_base"] = "";
 		update["npc_persuasion_base"] = "";
+		update["npc_piloting_base"] = "";
 		update["npc_religion_base"] = "";
 		update["npc_sleight_of_hand_base"] = "";
 		update["npc_stealth_base"] = "";
 		update["npc_survival_base"] = "";
+		update["npc_technology_base"] = "";
 		if(page.data["Skills"] && page.data["Skills"] != "") {
 			skillarray = page.data["Skills"].split(", ");
 			_.each(skillarray, function(skill) {
@@ -2359,6 +2362,7 @@ var check_itemmodifiers = function(modifiers, previousValue) {
 		if(mod.indexOf("animal handling") > -1) {update_skills(["animal_handling"]);};
 		if(mod.indexOf("arcana") > -1) {update_skills(["arcana"]);};
 		if(mod.indexOf("athletics") > -1) {update_skills(["athletics"]);};
+		if(mod.indexOf("data") > -1) {update_skills(["data"]);};
 		if(mod.indexOf("deception") > -1) {update_skills(["deception"]);};
 		if(mod.indexOf("history") > -1) {update_skills(["history"]);};
 		if(mod.indexOf("insight") > -1) {update_skills(["insight"]);};
@@ -2369,10 +2373,12 @@ var check_itemmodifiers = function(modifiers, previousValue) {
 		if(mod.indexOf("perception") > -1) {update_skills(["perception"]);};
 		if(mod.indexOf("performance") > -1) {update_skills(["performance"]);};
 		if(mod.indexOf("persuasion") > -1) {update_skills(["persuasion"]);};
+		if(mod.indexOf("piloting") > -1) {update_skills(["piloting"]);};
 		if(mod.indexOf("religion") > -1) {update_skills(["religion"]);};
 		if(mod.indexOf("sleight of hand") > -1) {update_skills(["sleight_of_hand"]);};
 		if(mod.indexOf("stealth") > -1) {update_skills(["stealth"]);};
 		if(mod.indexOf("survival") > -1) {update_skills(["survival"]);};
+		if(mod.indexOf("technology") > -1) {update_skills(["technology"]);};
 	});
 };
 
@@ -4039,7 +4045,7 @@ var update_pb = function() {
 		callbacks.push( function() {update_initiative();} );
 		callbacks.push( function() {update_tool("all");} );
 		callbacks.push( function() {update_all_saves();} );
-		callbacks.push( function() {update_skills(["athletics", "acrobatics", "sleight_of_hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal_handling", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);} );
+		callbacks.push( function() {update_skills(["athletics", "acrobatics", "piloting", "sleight_of_hand", "stealth", "arcana", "data", "history", "investigation", "nature", "religion", "technology", "animal_handling", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);} );
 
 		setAttrs(update, {silent: true}, function() {callbacks.forEach(function(callback) {callback(); })} );
 	});
@@ -4352,16 +4358,18 @@ var update_npc_saves = function() {
 };
 
 var update_npc_skills = function() {
-	getAttrs(["npc_acrobatics_base","npc_animal_handling_base","npc_arcana_base","npc_athletics_base","npc_deception_base","npc_history_base","npc_insight_base","npc_intimidation_base","npc_investigation_base","npc_medicine_base","npc_nature_base","npc_perception_base","npc_performance_base","npc_persuasion_base","npc_religion_base","npc_sleight_of_hand_base","npc_stealth_base","npc_survival_base"], function(v) {
+	getAttrs(["npc_acrobatics_base","npc_animal_handling_base","npc_arcana_base","npc_athletics_base","npc_data_base","npc_deception_base","npc_history_base","npc_insight_base","npc_intimidation_base","npc_investigation_base","npc_medicine_base","npc_nature_base","npc_perception_base","npc_performance_base","npc_persuasion_base","npc_piloting_base","npc_religion_base","npc_sleight_of_hand_base","npc_stealth_base","npc_survival_base","npc_technology_base"], function(v) {
 		var update = {};
 		var last_skill = 0;
-		var survival_flag = 0; var survival = ""; var stealth_flag = 0; var stealth = ""; var sleight_of_hand_flag = 0; var sleight_of_hand = ""; var religion_flag = 0; var religion = ""; var persuasion_flag = 0; var persuasion = ""; var performance_flag = 0; var sperformance = ""; var perception_flag = 0; var perception = ""; var perception_flag = 0; var perception = ""; var nature_flag = 0; var nature = ""; var medicine_flag = 0; var medicine = ""; var investigation_flag = 0; var investigation = ""; var intimidation_flag = 0; var intimidation = ""; var insight_flag = 0; var insight = ""; var history_flag = 0; var history = ""; var deception_flag = 0; var deception = ""; var athletics_flag = 0; var athletics = ""; var arcana_flag = 0; var arcana = ""; var animal_handling_flag = 0; var animal_handling = ""; var acrobatics_flag = 0; var acrobatics = "";
+		var technology_flag = 0; var technology = ""; var survival_flag = 0; var survival = ""; var stealth_flag = 0; var stealth = ""; var sleight_of_hand_flag = 0; var sleight_of_hand = ""; var religion_flag = 0; var religion = ""; var persuasion_flag = 0; var piloting_flag = 0; var piloting = ""; var persuasion = ""; var performance_flag = 0; var sperformance = ""; var perception_flag = 0; var perception = ""; var perception_flag = 0; var perception = ""; var nature_flag = 0; var nature = ""; var medicine_flag = 0; var medicine = ""; var investigation_flag = 0; var investigation = ""; var intimidation_flag = 0; var intimidation = ""; var insight_flag = 0; var insight = ""; var history_flag = 0; var history = ""; var deception_flag = 0; var deception = ""; var data_flag = 0; var data = ""; var athletics_flag = 0; var athletics = ""; var arcana_flag = 0; var arcana = ""; var animal_handling_flag = 0; var animal_handling = ""; var acrobatics_flag = 0; var acrobatics = "";
 
 		// 1 = Positive, 2 = Last, 3 = Negative, 4 = Last Negative
+		if(v.npc_technology_base && v.npc_technology_base != "@{intelligence_mod}") {technology = parseInt(v.npc_technology_base, 10); if(last_skill === 0) {last_skill = 1; technology_flag = technology < 0 ? 4 : 2;} else {technology_flag = technology < 0 ? 3 : 1;} } else {technology_flag = 0; technology = "";};
 		if(v.npc_survival_base && v.npc_survival_base != "@{wisdom_mod}") {survival = parseInt(v.npc_survival_base, 10); if(last_skill === 0) {last_skill = 1; survival_flag = survival < 0 ? 4 : 2;} else {survival_flag = survival < 0 ? 3 : 1;} } else {survival_flag = 0; survival = "";};
 		if(v.npc_stealth_base && v.npc_stealth_base != "@{dexterity_mod}") {stealth = parseInt(v.npc_stealth_base, 10); if(last_skill === 0) {last_skill = 1; stealth_flag = stealth < 0 ? 4 : 2;} else {stealth_flag = stealth < 0 ? 3 : 1;} } else {stealth_flag = 0; stealth = "";};
 		if(v.npc_sleight_of_hand_base && v.npc_sleight_of_hand_base != "@{dexterity_mod}") {sleight_of_hand = parseInt(v.npc_sleight_of_hand_base, 10); if(last_skill === 0) {last_skill = 1; sleight_of_hand_flag = sleight_of_hand < 0 ? 4 : 2;} else {sleight_of_hand_flag = sleight_of_hand < 0 ? 3 : 1;} } else {sleight_of_hand_flag = 0; sleight_of_hand = "";};
 		if(v.npc_religion_base && v.npc_religion_base != "@{intelligence_mod}") {religion = parseInt(v.npc_religion_base, 10); if(last_skill === 0) {last_skill = 1; religion_flag = religion < 0 ? 4 : 2;} else {religion_flag = religion < 0 ? 3 : 1;} } else {religion_flag = 0; religion = "";};
+		if(v.npc_piloting_base && v.npc_piloting_base != "@{dexterity_mod}") {piloting = parseInt(v.npc_piloting_base, 10); if(last_skill === 0) {last_skill = 1; piloting_flag = piloting < 0 ? 4 : 2;} else {piloting_flag = piloting < 0 ? 3 : 1;} } else {piloting_flag = 0; piloting = "";};
 		if(v.npc_persuasion_base && v.npc_persuasion_base != "@{charisma_mod}") {persuasion = parseInt(v.npc_persuasion_base, 10); if(last_skill === 0) {last_skill = 1; persuasion_flag = persuasion < 0 ? 4 : 2;} else {persuasion_flag = persuasion < 0 ? 3 : 1;} } else {persuasion_flag = 0; persuasion = "";};
 		if(v.npc_performance_base && v.npc_performance_base != "@{charisma_mod}") {sperformance = parseInt(v.npc_performance_base, 10); if(last_skill === 0) {last_skill = 1; performance_flag = sperformance < 0 ? 4 : 2;} else {performance_flag = sperformance < 0 ? 3 : 1;} } else {performance_flag = 0; sperformance = "";};
 		if(v.npc_perception_base && v.npc_perception_base != "@{wisdom_mod}") {perception = parseInt(v.npc_perception_base, 10); if(last_skill === 0) {last_skill = 1; perception_flag = perception < 0 ? 4 : 2;} else {perception_flag = perception < 0 ? 3 : 1;} } else {perception_flag = 0; perception = "";};
@@ -4372,14 +4380,13 @@ var update_npc_skills = function() {
 		if(v.npc_insight_base && v.npc_insight_base != "@{wisdom_mod}") {insight = parseInt(v.npc_insight_base, 10); if(last_skill === 0) {last_skill = 1; insight_flag = insight < 0 ? 4 : 2;} else {insight_flag = insight < 0 ? 3 : 1;} } else {insight_flag = 0; insight = "";};
 		if(v.npc_history_base && v.npc_history_base != "@{intelligence_mod}") {history = parseInt(v.npc_history_base, 10); if(last_skill === 0) {last_skill = 1; history_flag = history < 0 ? 4 : 2;} else {history_flag = history < 0 ? 3 : 1;} } else {history_flag = 0; history = "";};
 		if(v.npc_deception_base && v.npc_deception_base != "@{charisma_mod}") {deception = parseInt(v.npc_deception_base, 10); if(last_skill === 0) {last_skill = 1; deception_flag = deception < 0 ? 4 : 2;} else {deception_flag = deception < 0 ? 3 : 1;} } else {deception_flag = 0; deception = "";};
+		if(v.npc_data_base && v.npc_data_base != "@{intelligence_mod}") {data = parseInt(v.npc_data_base, 10); if(last_skill === 0) {last_skill = 1; data_flag = data < 0 ? 4 : 2;} else {data_flag = data < 0 ? 3 : 1;} } else {data_flag = 0; data = "";};
 		if(v.npc_athletics_base && v.npc_athletics_base != "@{strength_mod}") {athletics = parseInt(v.npc_athletics_base, 10); if(last_skill === 0) {last_skill = 1; athletics_flag = athletics < 0 ? 4 : 2;} else {athletics_flag = athletics < 0 ? 3 : 1;} } else {athletics_flag = 0; athletics = "";};
 		if(v.npc_arcana_base && v.npc_arcana_base != "@{intelligence_mod}") {arcana = parseInt(v.npc_arcana_base, 10); if(last_skill === 0) {last_skill = 1; arcana_flag = arcana < 0 ? 4 : 2;} else {arcana_flag = arcana < 0 ? 3 : 1;} } else {arcana_flag = 0; arcana = "";};
 		if(v.npc_animal_handling_base && v.npc_animal_handling_base != "@{wisdom_mod}") {animal_handling = parseInt(v.npc_animal_handling_base, 10); if(last_skill === 0) {last_skill = 1; animal_handling_flag = animal_handling < 0 ? 4 : 2;} else {animal_handling_flag = animal_handling < 0 ? 3 : 1;} } else {animal_handling_flag = 0; animal_handling = "";};
 		if(v.npc_acrobatics_base && v.npc_acrobatics_base != "@{dexterity_mod}") {acrobatics = parseInt(v.npc_acrobatics_base, 10); if(last_skill === 0) {last_skill = 1; acrobatics_flag = acrobatics < 0 ? 4 : 2;} else {acrobatics_flag = acrobatics < 0 ? 3 : 1;} } else {acrobatics_flag = 0; acrobatics = "";};
 
 		update["npc_skills_flag"] = "" + acrobatics + animal_handling + arcana + athletics + deception + history + insight + intimidation + investigation + medicine + nature + perception + sperformance + persuasion + religion + sleight_of_hand + stealth + survival;
-		update["npc_stealth_flag"] = stealth_flag;
-		update["npc_survival"] = survival;;
 		update["npc_acrobatics"] = acrobatics;
 		update["npc_acrobatics_flag"] = acrobatics_flag;
 		update["npc_animal_handling"] = animal_handling;
@@ -4388,6 +4395,8 @@ var update_npc_skills = function() {
 		update["npc_arcana_flag"] = arcana_flag;
 		update["npc_athletics"] = athletics;
 		update["npc_athletics_flag"] = athletics_flag;
+		update["npc_data"] = data;
+		update["npc_data_flag"] = data_flag;
 		update["npc_deception"] = deception;
 		update["npc_deception_flag"] = deception_flag;
 		update["npc_history"] = history;
@@ -4406,6 +4415,8 @@ var update_npc_skills = function() {
 		update["npc_perception_flag"] = perception_flag;
 		update["npc_performance"] = sperformance;
 		update["npc_performance_flag"] = performance_flag;
+		update["npc_piloting"] = piloting;
+		update["npc_piloting_flag"] = piloting_flag;
 		update["npc_persuasion"] = persuasion;
 		update["npc_persuasion_flag"] = persuasion_flag;
 		update["npc_religion"] = religion;
@@ -4416,6 +4427,8 @@ var update_npc_skills = function() {
 		update["npc_stealth_flag"] = stealth_flag;
 		update["npc_survival"] = survival;
 		update["npc_survival_flag"] = survival_flag;
+		update["npc_technology"] = technology;
+		update["npc_technology_flag"] = technology_flag;
 		setAttrs(update, {silent: true});
 	});
 };

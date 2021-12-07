@@ -150,6 +150,10 @@
 									<input type="text" name="attr_npc_athletics_base">
 								</div>
 								<div class="sheet-form-group">
+									<label>Data</label>
+									<input type="text" name="attr_npc_data_base">
+								</div>
+								<div class="sheet-form-group">
 									<label>Deception</label>
 									<input type="text" name="attr_npc_deception_base">
 								</div>
@@ -190,6 +194,10 @@
 									<input type="text" name="attr_npc_persuasion_base">
 								</div>
 								<div class="sheet-form-group">
+									<label>Piloting</label>
+									<input type="text" name="attr_npc_piloting_base">
+								</div>
+								<div class="sheet-form-group">
 									<label>Religion</label>
 									<input type="text" name="attr_npc_religion_base">
 								</div>
@@ -205,10 +213,15 @@
 									<label>Survival</label>
 									<input type="text" name="attr_npc_survival_base">
 								</div>
+								<div class="sheet-form-group">
+									<label>Technology</label>
+									<input type="text" name="attr_npc_technology_base">
+								</div>
 								<input type="hidden" name="attr_npc_acrobatics" value="@{dexterity_mod}">
 								<input type="hidden" name="attr_npc_animal_handling" value="@{wisdom_mod}">
 								<input type="hidden" name="attr_npc_arcana" value="@{intelligence_mod}">
 								<input type="hidden" name="attr_npc_athletics" value="@{strength_mod}">
+								<input type="hidden" name="attr_npc_data" value="@{intelligence_mod}">
 								<input type="hidden" name="attr_npc_deception" value="@{charisma_mod}">
 								<input type="hidden" name="attr_npc_history" value="@{intelligence_mod}">
 								<input type="hidden" name="attr_npc_insight" value="@{wisdom_mod}">
@@ -219,10 +232,12 @@
 								<input type="hidden" name="attr_npc_perception" value="@{wisdom_mod}">
 								<input type="hidden" name="attr_npc_performance" value="@{charisma_mod}">
 								<input type="hidden" name="attr_npc_persuasion" value="@{charisma_mod}">
+								<input type="hidden" name="attr_npc_piloting" value="@{dexterity_mod}">
 								<input type="hidden" name="attr_npc_religion" value="@{intelligence_mod}">
 								<input type="hidden" name="attr_npc_sleight_of_hand" value="@{dexterity_mod}">
 								<input type="hidden" name="attr_npc_stealth" value="@{dexterity_mod}">
 								<input type="hidden" name="attr_npc_survival" value="@{wisdom_mod}">
+								<input type="hidden" name="attr_npc_technology" value="@{intelligence_mod}">
 							</div>
 						</div>
 						<div class="sheet-form-group">
@@ -497,6 +512,13 @@
 								</button>
 							</span>
 							<span>
+								<input type="hidden" name="attr_npc_data_flag" value="0" class="sheet-field-toggle">
+								<button type="roll" name="roll_npc_data" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=Data}} {{mod=@{npc_data}}} {{r1=[[@{d20}+@{npc_data}]]}} @{rtype}+@{npc_data}]]}} {{type=Skill}}">
+									<span>Data</span>
+									<span name="attr_npc_data"></span>
+								</button>
+							</span>
+							<span>
 								<input type="hidden" name="attr_npc_deception_flag" value="0" class="sheet-field-toggle">
 								<button type="roll" name="roll_npc_deception" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=Deception}} {{mod=@{npc_deception}}} {{r1=[[@{d20}+@{npc_deception}]]}} @{rtype}+@{npc_deception}]]}} {{type=Skill}}">
 									<span>Deception</span>
@@ -567,6 +589,13 @@
 								</button>
 							</span>
 							<span>
+								<input type="hidden" name="attr_npc_piloting_flag" value="0" class="sheet-field-toggle">
+								<button type="roll" name="roll_npc_piloting" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=Piloting}} {{mod=@{npc_piloting}}} {{r1=[[@{d20}+@{npc_piloting}]]}} @{rtype}+@{npc_piloting}]]}} {{type=Skill}}">
+									<span>Piloting</span>
+									<span name="attr_npc_piloting"></span>
+								</button>
+							</span>
+							<span>
 								<input type="hidden" name="attr_npc_religion_flag" value="0" class="sheet-field-toggle">
 								<button type="roll" name="roll_npc_religion" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=Religion}} {{mod=@{npc_religion}}} {{r1=[[@{d20}+@{npc_religion}]]}} @{rtype}+@{npc_religion}]]}} {{type=Skill}}">
 									<span>Religion</span>
@@ -592,6 +621,13 @@
 								<button type="roll" name="roll_npc_survival" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=Survival}} {{mod=@{npc_survival}}} {{r1=[[@{d20}+@{npc_survival}]]}} @{rtype}+@{npc_survival}]]}} {{type=Skill}}">
 									<span>Survival</span>
 									<span name="attr_npc_survival"></span>
+								</button>
+							</span>
+							<span>
+								<input type="hidden" name="attr_npc_technology_flag" value="0" class="sheet-field-toggle">
+								<button type="roll" name="roll_npc_technology" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=Technology}} {{mod=@{npc_technology}}} {{r1=[[@{d20}+@{npc_technology}]]}} @{rtype}+@{npc_technology}]]}} {{type=Skill}}">
+									<span>Technology</span>
+									<span name="attr_npc_technology"></span>
 								</button>
 							</span>
 						</div>
@@ -1267,6 +1303,22 @@
 										</div>
 										<div class="sheet-pc-skill">
 											<div class="sheet-checkbox-image">
+												<input type="checkbox" name="attr_data_prof" title="@{data_prof}" value="(@{pb}*@{data_type})">
+												<span></span>
+											</div>
+											<span name='attr_data_bonus' title='@{data_bonus}'>0</span>
+											<button type='roll' name='roll_data' value='@{wtype}&{template:simple} {{rname=@{data_attribute} (Data)}} {{mod=@{data_bonus}}} {{r1=[[@{d20}+@{data_bonus}@{pbd_safe}]]}} @{rtype}+@{data_bonus}@{pbd_safe}]]}} {{global=@{global_skill_mod}}} @{charname_output}'>Data</button>
+											<select name="attr_data_attribute" title="@{data_attribute}">
+												<option value="Strength">Str</option>
+												<option value="Dexterity">Dex</option>
+												<option value="Constitution">Con</option>
+												<option value="Intelligence" selected="selected">Int</option>
+												<option value="Wisdom">Wis</option>
+												<option value="Charisma">Cha</option>
+											</select>
+										</div>
+										<div class="sheet-pc-skill">
+											<div class="sheet-checkbox-image">
 												<input type="checkbox" name="attr_deception_prof" title="@{deception_prof}" value="(@{pb}*@{deception_type})">
 												<span></span>
 											</div>
@@ -1427,6 +1479,22 @@
 										</div>
 										<div class="sheet-pc-skill">
 											<div class="sheet-checkbox-image">
+												<input type="checkbox" name="attr_piloting_prof" title="@{piloting_prof}" value="(@{pb}*@{piloting_type})">
+												<span></span>
+											</div>
+											<span name='attr_piloting_bonus' title='@{piloting_bonus}'>0</span>
+											<button type='roll' name='roll_piloting' value='@{wtype}&{template:simple} {{rname=@{piloting_attribute} (Piloting)}} {{mod=@{piloting_bonus}}} {{r1=[[@{d20}+@{piloting_bonus}@{pbd_safe}]]}} @{rtype}+@{piloting_bonus}@{pbd_safe}]]}} {{global=@{global_skill_mod}}} @{charname_output}'>Piloting</button>
+											<select name="attr_piloting_attribute" title="@{piloting_attribute}">
+												<option value="Strength">Str</option>
+												<option value="Dexterity" selected="selected">Dex</option>
+												<option value="Constitution">Con</option>
+												<option value="Intelligence">Int</option>
+												<option value="Wisdom">Wis</option>
+												<option value="Charisma">Cha</option>
+											</select>
+										</div>
+										<div class="sheet-pc-skill">
+											<div class="sheet-checkbox-image">
 												<input type="checkbox" name="attr_religion_prof" title="@{religion_prof}" value="(@{pb}*@{religion_type})">
 												<span></span>
 											</div>
@@ -1486,6 +1554,22 @@
 												<option value="Constitution">Con</option>
 												<option value="Intelligence">Int</option>
 												<option value="Wisdom" selected="selected">Wis</option>
+												<option value="Charisma">Cha</option>
+											</select>
+										</div>
+										<div class="sheet-pc-skill">
+											<div class="sheet-checkbox-image">
+												<input type="checkbox" name="attr_technology_prof" title="@{technology_prof}" value="(@{pb}*@{technology_type})">
+												<span></span>
+											</div>
+											<span name='attr_technology_bonus' title='@{technology_bonus}'>0</span>
+											<button type='roll' name='roll_technology' value='@{wtype}&{template:simple} {{rname=@{technology_attribute} (Technology)}} {{mod=@{technology_bonus}}} {{r1=[[@{d20}+@{technology_bonus}@{pbd_safe}]]}} @{rtype}+@{technology_bonus}@{pbd_safe}]]}} {{global=@{global_skill_mod}}} @{charname_output}'>Technology</button>
+											<select name="attr_technology_attribute" title="@{technology_attribute}">
+												<option value="Strength">Str</option>
+												<option value="Dexterity">Dex</option>
+												<option value="Constitution">Con</option>
+												<option value="Intelligence" selected="selected">Int</option>
+												<option value="Wisdom">Wis</option>
 												<option value="Charisma">Cha</option>
 											</select>
 										</div>
@@ -6552,6 +6636,14 @@
 													</select>
 												</div>
 												<div class="sheet-form-group">
+													<label>Data Modifier:</label>
+													<input type="text" name="attr_data_flat" placeholder="0" title="@{data_flat}">
+													<select name="attr_data_type" title="@{data_type}">
+														<option value="1" selected="selected">Normal</option>
+														<option value="2">Expertise</option>
+													</select>
+												</div>
+												<div class="sheet-form-group">
 													<label>Deception Modifier:</label>
 													<input type="text" name="attr_deception_flat" placeholder="0" title="@{deception_flat}">
 													<select name="attr_deception_type" title="@{deception_type}">
@@ -6632,6 +6724,14 @@
 													</select>
 												</div>
 												<div class="sheet-form-group">
+													<label>Piloting Modifier:</label>
+													<input type="text" name="attr_piloting_flat" placeholder="0" title="@{piloting_flat}">
+													<select name="attr_piloting_type" title="@{piloting_type}">
+														<option value="1" selected="selected">Normal</option>
+														<option value="2">Expertise</option>
+													</select>
+												</div>
+												<div class="sheet-form-group">
 													<label>Religion Modifier:</label>
 													<input type="text" name="attr_religion_flat" placeholder="0" title="@{religion_flat}">
 													<select name="attr_religion_type" title="@{religion_type}">
@@ -6659,6 +6759,14 @@
 													<label>Survival Modifier:</label>
 													<input type="text" name="attr_survival_flat" placeholder="0" title="@{survival_flat}">
 													<select name="attr_survival_type" title="@{survival_type}">
+														<option value="1" selected="selected">Normal</option>
+														<option value="2">Expertise</option>
+													</select>
+												</div>
+												<div class="sheet-form-group">
+													<label>Technology Modifier:</label>
+													<input type="text" name="attr_technology_flat" placeholder="0" title="@{technology_flat}">
+													<select name="attr_technology_type" title="@{technology_type}">
 														<option value="1" selected="selected">Normal</option>
 														<option value="2">Expertise</option>
 													</select>
@@ -6743,6 +6851,7 @@
 			<input type='hidden' name='attr_animal_handling_bonus' value='0'>
 			<input type='hidden' name='attr_arcana_bonus' value='0'>
 			<input type='hidden' name='attr_athletics_bonus' value='0'>
+			<input type='hidden' name='attr_data_bonus' value='0'>
 			<input type='hidden' name='attr_deception_bonus' value='0'>
 			<input type='hidden' name='attr_history_bonus' value='0'>
 			<input type='hidden' name='attr_insight_bonus' value='0'>
@@ -6753,10 +6862,12 @@
 			<input type='hidden' name='attr_perception_bonus' value='0'>
 			<input type='hidden' name='attr_performance_bonus' value='0'>
 			<input type='hidden' name='attr_persuasion_bonus' value='0'>
+			<input type='hidden' name='attr_piloting_bonus' value='0'>
 			<input type='hidden' name='attr_religion_bonus' value='0'>
 			<input type='hidden' name='attr_sleight_of_hand_bonus' value='0'>
 			<input type='hidden' name='attr_stealth_bonus' value='0'>
 			<input type='hidden' name='attr_survival_bonus' value='0'>
+			<input type='hidden' name='attr_technology_bonus' value='0'>
 			<input type='hidden' name='attr_lvl1_slots_total' value='0'>
 			<input type='hidden' name='attr_lvl2_slots_total' value='0'>
 			<input type='hidden' name='attr_lvl3_slots_total' value='0'>
