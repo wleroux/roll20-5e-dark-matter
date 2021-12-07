@@ -3719,6 +3719,16 @@ var update_class = function() {
 					update["wisdom_save_prof"] = 0;
 					update["charisma_save_prof"] = 0;
 					break;
+				case "Artificer":
+					update["hitdietype"] = 8;
+					update["spellcasting_ability"] = "@{intelligence_mod}";
+					update["strength_save_prof"] = 0;
+					update["dexterity_save_prof"] = 0;
+					update["constitution_save_prof"] = "(@{pb})";
+					update["intelligence_save_prof"] = "(@{pb})";
+					update["wisdom_save_prof"] = 0;
+					update["charisma_save_prof"] = 0;
+					break;
 				case "Barbarian":
 					update["hitdietype"] = 12;
 					update["spellcasting_ability"] = "0*";
@@ -3766,6 +3776,16 @@ var update_class = function() {
 					update["dexterity_save_prof"] = 0;
 					update["constitution_save_prof"] = "(@{pb})";
 					update["intelligence_save_prof"] = 0;
+					update["wisdom_save_prof"] = 0;
+					update["charisma_save_prof"] = 0;
+					break;
+				case "Gadgeteer":
+					update["hitdietype"] = 6;
+					update["spellcasting_ability"] = "@{intelligence_mod}";
+					update["strength_save_prof"] = 0;
+					update["dexterity_save_prof"] = "(@{pb})";
+					update["constitution_save_prof"] = 0;
+					update["intelligence_save_prof"] = "(@{pb})";
 					update["wisdom_save_prof"] = 0;
 					update["charisma_save_prof"] = 0;
 					break;
@@ -3919,12 +3939,12 @@ var isMultiCaster = function(classes, arcane_fighter, arcane_rogue) {
 
 var getCasterType = function(class_string, levels, arcane_fighter, arcane_rogue) {
 	var full = ["bard","cleric","druid","sorcerer","wizard","full"];
-	var half = ["paladin","ranger","half"];
+	var half = ["artificer","paladin","ranger","half"];
 	class_string = class_string.toLowerCase();
 	if(full.indexOf(class_string) != -1) {
 		return 1;
 	} else if(half.indexOf(class_string) != -1) {
-		return (levels == 1) ? 0 : (1/2);
+		return (levels == 1 && class_string !== "artificer") ? 0 : (1/2);
 	} else if(class_string === "third" || (class_string === "fighter" && arcane_fighter === "1") || (class_string === "rogue" && arcane_rogue === "1")) {
 		return (levels == 1 || levels == 2) ? 0 : (1/3);
 	} else {
@@ -3947,8 +3967,8 @@ var checkCasterLevel = function(classes, arcane_fighter, arcane_rogue) {
 
 var checkHitDie = function(class_string) {
 	var d10class = ["fighter","paladin","ranger"];
-	var d8class = ["bard","cleric","druid","monk","rogue","warlock"];
-	var d6class = ["sorcerer","wizard"];
+	var d8class = ["artificer","bard","cleric","druid","monk","rogue","warlock"];
+	var d6class = ["gadgeteer","sorcerer","wizard"];
 	class_string = class_string.toLowerCase();
 	if(class_string === "barbarian") {return "12"}
 	else if (d10class.indexOf(class_string) != -1) {return "10"}
